@@ -16,7 +16,7 @@ jobs:
       - name: Update README
         if: ${{ failure() }}
         run: |
-          sed -i 's/✅/❌/g' /README.md
+          sed -i 's/✅/❌/g' README.md
       - name: Commit changes
         if: ${{ failure() }}
         uses: stefanzweifel/git-auto-commit-action@v4
