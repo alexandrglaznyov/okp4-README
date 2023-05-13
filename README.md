@@ -2,6 +2,6 @@
 
 | Ссылка               | Статус |
 |----------------------|--------|
-| http://example.com/  | ✅      |
+| http://example1.com/ | ✅      |
 | http://example.com/  | ✅      |
 | http://example.com/  | ✅      |
