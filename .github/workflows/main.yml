@@ -16,7 +16,11 @@ jobs:
       - name: Install packages
         run: npm install --global markdown-link-check
       - name: Check links
-        run: markdown-link-check -c .github/workflows/.markdownlinkcheck.json --replace '✅' '❌' README.md || true
+        run: |
+          set -e
+          markdown-link-check -c .github/workflows/.markdownlinkcheck.json --quiet README.md | \
+          sed 's/^\([^ ]*\) .*$/\1/g' | \
+          xargs -I{} sed -i 's/✅/❌/g' README.md -e '/\b{}\b/s/❌/✅/g'
       - name: Update README
         run: |
           sed -i 's/✅/❌/g' README.md
