@@ -2,6 +2,6 @@
 
 | Ссылка                  | Статус |
 |-------------------------|--------|
-| http://exampleqwse.com/ | ❌      |
-| http://example.com/     | ❌      |
-| http://example.com/     | ❌      |
+| http://exampleqwse.com/ | ✅      |
+| http://example.com/     | ✅      |
+| http://example.com/     | ✅      |
