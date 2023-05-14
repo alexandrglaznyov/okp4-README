@@ -1,27 +1,27 @@
-name: Check Links
-on:
-  push:
-    branches:
-      - main 
-jobs:
-  check-links:
-    runs-on: ubuntu-latest
+# name: Check Links
+# on:
+#   push:
+#     branches:
+#       - main 
+# jobs:
+#   check-links:
+#     runs-on: ubuntu-latest
     
-    permissions:
-      contents: write
+#     permissions:
+#       contents: write
       
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Install packages
-        run: npm install --global markdown-link-check
-      - name: Check links
-        run: markdown-link-check -c .github/workflows/.markdownlinkcheck.json --replace '✅' '❌' README.md || true
-      - name: Update README
-        run: |
-          sed -i 's/✅/❌/g' README.md
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Update README.md"
-          commit_options: "--no-verify --signoff"
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+#       - name: Install packages
+#         run: npm install --global markdown-link-check
+#       - name: Check links
+#         run: markdown-link-check -c .github/workflows/.markdownlinkcheck.json --replace '✅' '❌' README.md || true
+#       - name: Update README
+#         run: |
+#           sed -i 's/✅/❌/g' README.md
+#       - name: Commit changes
+#         uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           commit_message: "Update README.md"
+#           commit_options: "--no-verify --signoff"
