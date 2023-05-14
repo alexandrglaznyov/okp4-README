@@ -1,7 +1,7 @@
 # okp4-README
 
-| Ссылка                  | Статус |
-|-------------------------|--------|
-| http://exampleqwse.com/ | ❌      |
-| http://example.com/     | ❌      |
-| http://example.com/     | ❌      |
+| Ссылка               | Статус |
+|----------------------|--------|
+| https://google.com/  | ✅      |
+| https://google.com/  | ✅      |
+| https://google.com/  | ✅      |
