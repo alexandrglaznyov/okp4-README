@@ -25,5 +25,5 @@ jobs:
         if: ${{ failure() }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Update README.md"
+          commit_message: "Update1 README.md"
           commit_options: "--no-verify --signoff"
