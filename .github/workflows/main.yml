@@ -15,12 +15,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Install packages
         run: npm install --global markdown-link-check
-      - name: Check links
-        run: markdown-link-check -c .github/workflows/.markdownlinkcheck.json README.md
       - name: Update README
-        if: ${{ failure() }}
         run: |
-          sed -i 's/✅/❌/g' README.md
+          markdown-link-check -c .github/workflows/.markdownlinkcheck.json README.md > output.txt || true
+          while read line; do
+          if echo $line | grep -q "FAIL"; then
+          link=$(echo $line | awk '{print $4}')
+          sed -i "s|$link|❌ $link|g" README.md
+          fi
+          done < output.txt
       - name: Commit changes
         if: ${{ failure() }}
         uses: stefanzweifel/git-auto-commit-action@v4
