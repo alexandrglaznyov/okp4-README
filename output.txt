@@ -1,0 +1,7 @@
+
+FILE: README.md
+  [/] https://google.com/
+  [/] https://www.youtube.com/
+  [/] https://DontWorkLink.com/
+
+  3 links checked.
