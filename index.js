@@ -54,7 +54,6 @@ async function main(){
         const updatedTable = updatedLines.join('\n');
         fs.writeFileSync('./README.md', updatedTable, 'utf8');
     }
-
 }
 
 main();
