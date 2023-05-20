@@ -2,6 +2,6 @@
 
 | №   | Ссылка                           | $   | Статус |
 |-----|----------------------------------|-----|--------|
-| 1   | https://google.com/              | 12  | ✅      | 
+| 1   | https://google.comgfgdgf/        | 12  | ✅      | 
 | 2   | https://www.youtube.com/         | 23  | ✅      | 
 | 3   | https://www.youtubesdasdasd.com/ | 34  | ❌      | 
