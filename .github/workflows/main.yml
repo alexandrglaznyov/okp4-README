@@ -22,11 +22,16 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Run script
-        run: node index.js
-        
+      - name: Run check README
+        id: check
+        run: echo "::set-output name=output::$(node index.js)"
+
+      - name: debug 
+        run: echo "${{ steps.check.outputs.output }}"
+
       - name: Commit changes
+        if: steps.check.outputs.output == 'updated'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Update1 README.md"
+          commit_message: "Update status badge"
 

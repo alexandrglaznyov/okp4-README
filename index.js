@@ -2,32 +2,40 @@ const markdownLinkCheck = require('markdown-link-check');
 const fs = require('fs');
 
 const readmeContent = fs.readFileSync('./README.md', 'utf8');
-const arrDead = []
-const arrAlive = []
 const replacementSymbol = '❌';
 const replacementSymbolOk = '✅';
+const lines = readmeContent.split('\n');
 
 async function checkLinksInReadme() {
+    const arrDead = []
+    const arrAlive = []
     return new Promise((resolve, reject) => {
         markdownLinkCheck(readmeContent, (err, results) => {
             if (err) {
                 reject(err);
                 return;
             }
+           
+
             results.forEach((result) => {
-                if(result.status === 'dead') {
+                const linkLine = lines.find((line) => line.includes(result.link));
+                const currentStatus = linkLine.includes(replacementSymbolOk) ? 'alive' : 'dead';
+                if(result.status === 'dead' && currentStatus === 'alive') {
                     arrDead.push(result.link);
                 }
-                if(result.status === 'alive'){
+                if(result.status === 'alive' && currentStatus === 'dead') {
                     arrAlive.push(result.link)
                 }
             });
-            resolve(arrDead);
+            resolve({
+                arrDead,
+                arrAlive
+            });
         });
     });
 }
 
-async function updateLinks(arrDead, arrAlive, lines) {
+async function updateLinks(arrDead, arrAlive) {
     const updatedLines = lines.map((line) => {
         arrDead.forEach((link) => {
             if (line.includes(link)) {
@@ -45,14 +53,12 @@ async function updateLinks(arrDead, arrAlive, lines) {
 }
 
 async function main(){
-    await checkLinksInReadme();
-    const lines = readmeContent.split('\n');
-
-
-    if (arrAlive && arrDead) {
-        const updatedLines = await updateLinks(arrDead, arrAlive, lines);
+    const {arrAlive, arrDead} = await checkLinksInReadme();
+    if (arrAlive.length || arrDead.length) {
+        const updatedLines = await updateLinks(arrDead, arrAlive);
         const updatedTable = updatedLines.join('\n');
         fs.writeFileSync('./README.md', updatedTable, 'utf8');
+        process.stdout.write('updated\n');
     }
 }
 
