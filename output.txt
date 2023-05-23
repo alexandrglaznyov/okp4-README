@@ -1,6 +1,0 @@
-
-FILE: README.md
-  [/] https://google.com/
-  [/] https://www.youtube.com/
-
-  2 links checked.
