@@ -1,6 +1,6 @@
-# okp4-README
+# okp4-README Example
 
-| №   | Ссылка                      | $   | Статус |
+| №   | links                       | $   | status |
 |-----|-----------------------------|-----|--------|
 | 1   | https://googledontwork.com/ | 12  | ❌      | 
 | 2   | https://www.youtube.com/    | 23  | ✅      | 
